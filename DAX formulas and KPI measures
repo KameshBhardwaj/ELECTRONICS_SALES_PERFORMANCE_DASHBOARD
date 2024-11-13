@@ -1,0 +1,29 @@
+DAX formulas and KPI measures
+
+1. Age Group Calculation (Custom Column):
+Age Group = SWITCH(
+    TRUE(),
+    'Electronic_sales_Sep2023-Sep2024'[Age] >= 18 && 'Electronic_sales_Sep2023-Sep2024'[Age] <= 25, "18-25",
+    'Electronic_sales_Sep2023-Sep2024'[Age] >= 26 && 'Electronic_sales_Sep2023-Sep2024'[Age] <= 35, "26-35",
+    'Electronic_sales_Sep2023-Sep2024'[Age] >= 36 && 'Electronic_sales_Sep2023-Sep2024'[Age] <= 45, "36-45",
+    'Electronic_sales_Sep2023-Sep2024'[Age] >= 46 && 'Electronic_sales_Sep2023-Sep2024'[Age] <= 55, "46-55",
+    'Electronic_sales_Sep2023-Sep2024'[Age] >= 56 && 'Electronic_sales_Sep2023-Sep2024'[Age] <= 65, "56-65",
+    'Electronic_sales_Sep2023-Sep2024'[Age] >= 66 && 'Electronic_sales_Sep2023-Sep2024'[Age] <= 80, "66-80",
+    "Other"
+)
+
+2. Custom Column for Total Price:
+Total Price = 'Electronic_sales_Sep2023-Sep2024'[Unit Price] * 'Electronic_sales_Sep2023-Sep2024'[Units Sold]
+
+3. Total Customers: 
+Total Customers = DISTINCTCOUNT('Electronic_sales_Sep2023-Sep2024'[Customer ID])
+
+4. Total Sales:
+Total Sales = SUM('Electronic_sales_Sep2023-Sep2024'[Total Price]) + SUM('Electronic_sales_Sep2023-Sep2024'[Add-on Price])
+
+5. Total Units Sold:
+Total Units Sold = SUM('Electronic_sales_Sep2023-Sep2024'[Units Sold])
+
+6. Average Rating:
+Average Rating = AVERAGE('Electronic_sales_Sep2023-Sep2024'[Customer Rating])
+
